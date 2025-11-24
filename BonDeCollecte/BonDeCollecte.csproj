@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-WebApplication-63822cb1-2a88-4d54-8e62-3321496f9314</UserSecretsId>
+    <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\images\qrcodes\**" />
+    <Content Remove="wwwroot\images\qrcodes\**" />
+    <EmbeddedResource Remove="wwwroot\images\qrcodes\**" />
+    <None Remove="wwwroot\images\qrcodes\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\images\editer%282%29.png" />
+    <Content Remove="wwwroot\images\info%281%29.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.104.2" />
+    <PackageReference Include="FreeSpire.PDF" Version="10.2.0" />
+    <PackageReference Include="FreeSpire.XLS" Version="14.2.0" />
+    <PackageReference Include="GrapeCity.Documents.Excel" Version="7.2.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.11" />
+    <PackageReference Include="Microsoft.Maui.Graphics" Version="10.0.0-preview.5.25306.5" />
+    <PackageReference Include="Microsoft.Maui.Graphics.Skia" Version="10.0.0-preview.5.25306.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+    <PackageReference Include="PdfReport" Version="2.9.4" />
+    <PackageReference Include="PdfSharp.Core" Version="1.0.0" />
+    <PackageReference Include="QRCoder" Version="1.6.0" />
+    <PackageReference Include="Spire.PDF" Version="11.7.14" />
+    <PackageReference Include="Spire.XLS" Version="15.7.8" />
+  </ItemGroup>
+</Project>

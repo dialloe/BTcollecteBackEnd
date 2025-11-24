@@ -1,0 +1,190 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+th, td {
+    padding: 15px;
+}
+th {
+    color: white !important;
+    background: black !important;
+}
+
+a {
+    color :darkgoldenrod !important;
+}
+
+tr:nth-child(2n + 1) td {
+    background-color: #fff;
+}
+
+tr:nth-child(2n + 2) td {
+    background-color: #ffa;
+}
+
+h4 {
+    color : darkgoldenrod !important;
+}
+
+tr td:last-child {
+    text-align:  left;
+}
+tr th:last-child {
+    text-align:left; 
+}
+
+form {
+    border : 1px black solid;
+    border-radius : 5px;
+    padding : 20px;
+}
+
+.dark-yellow {
+    background: #ffb006 !important;
+}
+
+.white-yellow {
+    background: darkgoldenrod !important;
+}
+.bordeau {
+    background: #8a1d59 !important;
+}
+
+.btn-pink {
+    background-color: #8a1d59 !important;
+    color :white;
+}
+
+.form-group {
+    padding : 7px !important;
+}
+.form-groupSearchInWH {
+    padding : 7px !important;
+}
+
+hr {
+    margin-bottom : 30px !important;
+}
+
+.Slideshow {
+    height: 400px;
+    width: 400px;
+    overflow: hidden;
+}
+ 
+ 
+a[title]:hover::after {
+    content: attr(title);
+    position: relative;
+    font-family: cursive;
+    font-size: 2rem;
+    margin-left: 16%;
+    color: orangered;
+    background-color: transparent;
+}
+
+  
+
+.Slideshow.Content {
+    position: relative;
+    height: 100%;
+}
+
+.Slideshow.Content img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    animation-name: fadeInOut;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    /*animation-duration: 15s;*/
+    animation-direction: alternate;
+}
+
+.Slideshow.Content img:nth-of-type(1) {
+        animation-delay: 10s;
+}
+
+.Slideshow.Content img:nth-of-type(2) {
+        animation-delay: 5s;
+}
+
+.Slideshow.Content img:nth-of-type(3) {
+    animation-delay: 0s;
+}
+
+.cadre-tableau{
+    border: 0.5px solid black; /* Crée une bordure simple autour du tableau */
+    vertical-align:middle;
+}
+
+.cadre-tableau td 
+{
+  border: 0.5px solid black; /* Crée des bordures pour chaque cellule */
+}
+ 
+
+
+@keyframes fadeInOut {
+    0% {
+            opacity: 0;
+        }
+
+        30% {
+            opacity: 0;
+        }
+
+        35% {
+            opacity: 1;
+        }
+
+        65% {
+            opacity: 1;
+        }
+
+        70% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+.table > :not(caption) > * > * {
+    padding: .2rem .2rem !important;
+    background-color: var(--bs-table-bg);
+    border-bottom-width: 1px;
+    box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+}
+
+hr {
+    margin-bottom: 10px !important;
+}
+
+.row {
+   /* background-color: linen !important;*/
+}
