@@ -16,7 +16,7 @@ namespace BonDeCollecte.Data
         public DbSet<Client> Clients { get; set; }
         public DbSet<BTCollecte> BTCollectes { get; set; }
 
-
+        public DbSet<Utilisateur> Utilisateurs { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
