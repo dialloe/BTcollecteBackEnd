@@ -5,6 +5,16 @@ using System.Net;
 using BonDeCollecte.Data; 
 
 var builder = WebApplication.CreateBuilder(args);
+// Code added for CORS
+const string MyAllowAnyOrigins = "_myAllowAnyOrigins";
+// Add services to the container.
+builder.Services.AddCors(options => {
+    options.AddPolicy(
+    name: MyAllowAnyOrigins,
+    policy => {
+        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -31,7 +41,8 @@ builder.Services.AddMvc();
 //    .AddDefaultTokenProviders();
 
 var app = builder.Build();
-
+// Code added for CORS
+app.UseCors(MyAllowAnyOrigins);
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
