@@ -1,6 +1,7 @@
 ﻿using BonDeCollecte.Data;
 using BonDeCollecte.GenereToken;
 using BonDeCollecte.Models;
+using BonDeCollecte.GenereToken.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,9 +21,9 @@ namespace BonDeCollecte.Controllers
     public class LoginsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        private  TokenService _tokenService  ;
+        private  ITokenService _tokenService  ;
 
-        public LoginsController(ApplicationDbContext context , TokenService tokenService)
+        public LoginsController(ApplicationDbContext context , ITokenService tokenService)
         {
             _context = context;
             _tokenService = tokenService;
