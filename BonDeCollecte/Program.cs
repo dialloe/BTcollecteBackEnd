@@ -2,7 +2,12 @@ using DocumentFormat.OpenXml.InkML;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
-using BonDeCollecte.Data; 
+using BonDeCollecte.Data;
+using BonDeCollecte.GenereToken.Services;
+using BonDeCollecte.GenereToken;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 // Code added for CORS
@@ -23,6 +28,36 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddControllersWithViews();
+
+// Configuration JWT
+var jwtKey = builder.Configuration["Jwt:Key"] ?? "votre_cle_secrete_tres_longue_et_complexe";
+var jwtIssuer = builder.Configuration["Jwt:Issuer"] ?? "votre_issuer";
+var jwtAudience = builder.Configuration["Jwt:Audience"] ?? "votre_audience";
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = jwtIssuer,
+        ValidAudience = jwtAudience,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+    };
+});
+
+builder.Services.AddAuthorization();
+
+
+
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 builder.Services.AddMvc();
 
