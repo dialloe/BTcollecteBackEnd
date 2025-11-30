@@ -1,7 +1,8 @@
 ﻿using BonDeCollecte.Data;
 using BonDeCollecte.GenereToken;
-using BonDeCollecte.Models;
 using BonDeCollecte.GenereToken.Services;
+using BonDeCollecte.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +32,7 @@ namespace BonDeCollecte.Controllers
 
         // GET: api/Logins
         [HttpGet]
+        [Authorize(Roles = "Admin,User")]
         public async Task<ActionResult<IEnumerable<Login>>> GetLogin()
         {
             return await _context.Login.ToListAsync();
@@ -38,6 +40,7 @@ namespace BonDeCollecte.Controllers
 
         // GET: api/Logins/5
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin,User")]
         public async Task<ActionResult<Login>> GetLogin(int id)
         {
             var login = await _context.Login.FindAsync(id);
@@ -94,9 +97,9 @@ namespace BonDeCollecte.Controllers
         }
 
 
-        [HttpPost("login")]
+       [HttpPost("login")]
         //public IActionResult Login([FromBody] LoginModel login)
-        public async Task<ActionResult<Login>> Login(Login login)
+       public async Task<ActionResult<Login>> Login(Login login)
         {
             var _LoginDto = new LoginModel();
             _LoginDto.Username = login.Username;
@@ -144,6 +147,7 @@ namespace BonDeCollecte.Controllers
 
         // DELETE: api/Logins/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteLogin(int id)
         {
             var login = await _context.Login.FindAsync(id);

@@ -7,6 +7,6 @@ namespace BonDeCollecte.GenereToken.Services
 {
     public interface ITokenService
     {
-        public string GenerateToken(string username, string role);
+         string GenerateToken(string username, string role);
     }
 }

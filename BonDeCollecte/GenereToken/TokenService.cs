@@ -23,10 +23,10 @@ namespace BonDeCollecte.GenereToken
 
             var claims = new[]
             {
-            new Claim(ClaimTypes.Name, username),
-            new Claim(ClaimTypes.Role, role),
-            // Ajoutez d'autres claims si nécessaire
-        };
+                new Claim(ClaimTypes.Name, username),
+                new Claim(ClaimTypes.Role, role),
+                // Ajoutez d'autres claims si nécessaire
+            };
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],
