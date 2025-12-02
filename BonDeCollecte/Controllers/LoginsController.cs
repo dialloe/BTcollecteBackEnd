@@ -1,19 +1,9 @@
 ﻿using BonDeCollecte.Data;
-using BonDeCollecte.GenereToken;
 using BonDeCollecte.GenereToken.Services;
 using BonDeCollecte.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BonDeCollecte.Controllers
 {
@@ -62,7 +52,6 @@ namespace BonDeCollecte.Controllers
             {
                 return BadRequest();
             }
-
             _context.Entry(login).State = EntityState.Modified;
 
             try
@@ -107,6 +96,7 @@ namespace BonDeCollecte.Controllers
 
             var user = _context.Login.FirstOrDefault(u => u.Username == _LoginDto.Username && u.PasswordHash == _LoginDto.Password);
 
+
             if (user == null)
             {
                 return Unauthorized();
@@ -115,13 +105,15 @@ namespace BonDeCollecte.Controllers
             // Générer un token JWT ici si tu veux une authentification par token
             //return Ok(new {token = "" , message = "Login réussi", userId = user.Id });
             var token = _tokenService.GenerateToken(user.Username, "User");
-            return Ok(new { Token = token });
+
+            return Ok(new { Token = token , UserRole = user.Role});
         }
 
     public class LoginModel
         {
             public string? Username { get; set; }
             public string? Password { get; set; }
+            public string? Role { get; set; }
         }
 
         // DELETE: api/Logins/5
