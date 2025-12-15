@@ -24,7 +24,7 @@ namespace BonDeCollecte.Controllers
 
         // GET: api/Clients
         [HttpGet]
-        [Authorize(Roles = "Admin,User")]
+        //[Authorize(Roles = "Admin,User")]
         public async Task<ActionResult<IEnumerable<Client>>> GetClients()
         {
             return await _context.Clients.ToListAsync();
@@ -32,7 +32,7 @@ namespace BonDeCollecte.Controllers
 
         // GET: api/Clients/5
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin,User")]
+        //[Authorize(Roles = "Admin,User")]
         public async Task<ActionResult<Client>> GetClient(int id)
         {
             var client = await _context.Clients.FindAsync(id);
@@ -48,7 +48,7 @@ namespace BonDeCollecte.Controllers
         // PUT: api/Clients/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin,User")] 
+        //[Authorize(Roles = "Admin,User")] 
         public async Task<IActionResult> PutClient(int id, Client client)
         {
             if (id != client.Id)
@@ -80,7 +80,7 @@ namespace BonDeCollecte.Controllers
         // POST: api/Clients
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize(Roles = "Admin,User")]
+        //[Authorize(Roles = "Admin,User")]
         public async Task<ActionResult<Client>> PostClient(Client client)
         {
             _context.Clients.Add(client);
@@ -91,7 +91,7 @@ namespace BonDeCollecte.Controllers
 
         // DELETE: api/Clients/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteClient(int id)
         {
             var client = await _context.Clients.FindAsync(id);

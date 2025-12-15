@@ -24,15 +24,17 @@ namespace BonDeCollecte.Controllers
 
         // GET: api/BTCollectes
         [HttpGet]
-        [Authorize(Roles = "Admin,User")]
+        //[Authorize(Roles = "Admin,User")]
         public async Task<ActionResult<IEnumerable<BTCollecte>>> GetBTCollectes()
         {
-            return await _context.BTCollectes.Include(bt => bt.Client).ToListAsync();
+           var BtCollectes = await _context.BTCollectes.Include(bt => bt.Client).ToListAsync();
+
+            return BtCollectes;
         }
 
         // GET: api/BTCollectes/5
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin,User")]
+        //[Authorize(Roles = "Admin,User")]
         public async Task<ActionResult<BTCollecte>> GetBTCollecte(int id)
         {
             var bTCollecte = await _context.BTCollectes.FindAsync(id);
@@ -80,18 +82,23 @@ namespace BonDeCollecte.Controllers
         // POST: api/BTCollectes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize(Roles = "Admin,User")]
+        //[Authorize(Roles = "Admin,User")]
         public async Task<ActionResult<BTCollecte>> PostBTCollecte(BTCollecte bTCollecte)
         {
+
             _context.BTCollectes.Add(bTCollecte);
+
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetBTCollecte", new { id = bTCollecte.Id }, bTCollecte);
         }
 
+
+
+
         // DELETE: api/BTCollectes/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteBTCollecte(int id)
         {
             var bTCollecte = await _context.BTCollectes.FindAsync(id);

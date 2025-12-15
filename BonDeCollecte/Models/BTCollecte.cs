@@ -5,8 +5,8 @@ namespace BonDeCollecte.Models
     public class BTCollecte
     {
         public int Id { get; set; }
+        public int? ClientId { get; set; }
         public DateTime DateCreation { get; set; }
-        public int IdClient { get; set; }
         public virtual Client? Client { get; set; }
         public double NbreFuts20L { get; set; }
         public double NbreFuts60L { get; set; }

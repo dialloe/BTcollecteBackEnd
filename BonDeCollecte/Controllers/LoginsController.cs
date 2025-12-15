@@ -22,7 +22,7 @@ namespace BonDeCollecte.Controllers
 
         // GET: api/Logins
         [HttpGet]
-        [Authorize(Roles = "Admin,User")]
+        //[Authorize(Roles = "Admin,User")]
         public async Task<ActionResult<IEnumerable<Login>>> GetLogin()
         {
             return await _context.Login.ToListAsync();
@@ -30,7 +30,7 @@ namespace BonDeCollecte.Controllers
 
         // GET: api/Logins/5
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin,User")]
+        //[Authorize(Roles = "Admin,User")]
         public async Task<ActionResult<Login>> GetLogin(int id)
         {
             var login = await _context.Login.FindAsync(id);
@@ -103,7 +103,6 @@ namespace BonDeCollecte.Controllers
             }
 
             // Générer un token JWT ici si tu veux une authentification par token
-            //return Ok(new {token = "" , message = "Login réussi", userId = user.Id });
             var token = _tokenService.GenerateToken(user.Username, "User");
 
             return Ok(new { Token = token , UserRole = user.Role});
@@ -118,7 +117,7 @@ namespace BonDeCollecte.Controllers
 
         // DELETE: api/Logins/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteLogin(int id)
         {
             var login = await _context.Login.FindAsync(id);
