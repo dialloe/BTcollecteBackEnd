@@ -8,9 +8,8 @@ namespace BonDeCollecte.Models
         public int? ClientId { get; set; }
         public DateTime DateCreation { get; set; }
         public virtual Client? Client { get; set; }
-        public double NbreFuts20L { get; set; }
-        public double NbreFuts60L { get; set; }
         public double CapaciteEnLitre { get; set; }
+        public double CapaciteEnLitreValide { get; set; }     
         public double PoidsTotal { get; set; }
         public double Montant { get; set; }
         public bool Paye { get; set; }
