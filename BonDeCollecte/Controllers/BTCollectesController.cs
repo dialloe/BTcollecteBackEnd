@@ -37,7 +37,7 @@ namespace BonDeCollecte.Controllers
         //[Authorize(Roles = "Admin,User")]
         public async Task<ActionResult<BTCollecte>> GetBTCollecte(int id)
         {
-            var bTCollecte = await _context.BTCollectes.FindAsync(id);
+            var bTCollecte = await _context.BTCollectes.Include(cl => cl.Client).FirstOrDefaultAsync(b => b.Id == id);
 
             if (bTCollecte == null)
             {
@@ -50,7 +50,7 @@ namespace BonDeCollecte.Controllers
         // PUT: api/BTCollectes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin,User")]
+        //[Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> PutBTCollecte(int id, BTCollecte bTCollecte)
         {
             if (id != bTCollecte.Id)
